@@ -1,10 +1,31 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/*Color Palette*/
+:root {
+    --teal: #1abc9c;
+    --teal-dark: #16a085;
+    --green: #2ecc71;
+    --green-dark: #27ae60;
+    --blue: #3498db;
+    --blue-dark: #2980b9;
+    --purple: #9b59b6;
+    --purple-dark: #8e44ad;
+    --black: #34495e;
+    --black-dark: #2c3e50;
+    --yellow: #f1c40f;
+    --yellow-dark: #f39c12;
+    --orange: #e67e22;
+    --orange-dark: #d35400;
+    --red: #e74c3c;
+    --red-dark: #c0392b;
+    --white: #ecf0f1;
+    --white-dark: #bdc3c7;
+    --gray: #95a5a6;
+    --gray-dark: #7f8c8d;
+}
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+a .navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
@@ -54,18 +75,131 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    background-color: var(--white);
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-left: 50px;
+    min-height: 100vh;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  z-index:-2;
+  left: 0;
+}
+
+/* Style the links inside the sidenav */
+#mySidenav a {
+    text-align: right;
+    position: absolute; /* Position them relative to the browser window */
+    left: -120px; /* Position them outside of the screen */
+    width: 170px;
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+    #mySidenav a:hover {
+        left: 0; /* On mouse-over, make the elements appear as they should */
+    }
+
+/* The about link: 20px from the top with a green background */
+#home {
+    top: 20px;
+    background-color: var(--teal-dark);
+}
+
+#login {
+    top: 80px;
+    background-color: var(--green-dark); /* Blue */
+}
+
+#profile {
+    top: 140px;
+    background-color: var(--blue-dark);
+}
+
+#teacher {
+    top: 200px;
+    background-color: var(--purple-dark); /* Light Black */
+}
+
+#student {
+    top: 260px;
+    background-color: var(--yellow-dark); /* Light Black */
+}
+
+#volunteer {
+    top: 320px;
+    background-color: var(--orange-dark) /* Light Black */
+}
+
+#help {
+    top: 380px;
+    background-color: var(--red-dark) /* Light Black */
+}
+
+#admin {
+    top: 440px;
+    background-color: var(--black-dark) /* Light Black */
+}
+
+.siddedbar{
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    top: 0;
+    left: 0;
+    background-color: var(--white-dark);
+    z-index: -1;
+}
+
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+        .sidebar a {
+            float: left;
+        }
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+/*Icons for the nav bar*/
+.icon {
+    filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(20deg) brightness(103%) contrast(101%);
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+/*Current User*/
+#curretUser {
+    align-items: center;
+    width: 100%;
+}
+.currentuserstrong {
+    padding-left: 20px;
+    padding-right: 20px;
 }
