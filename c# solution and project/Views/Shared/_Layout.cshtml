@@ -6,31 +6,38 @@
     <title>@ViewData["Title"] - Summer_Camp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Summer_Camp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- The sidebar -->
+    <div id="mySidenav" class="sidenav">
+        <a asp-controller="Home" asp-action="Index" id="home">Home <img src="~/image/homeicon.svg" class="icon" alt="Home" /></a>
+        <a asp-controller="Home" asp-action="Index" id="login">Sign In/Up <img src="~/image/profileicon.svg" class="icon" alt="Sign In or Sign Up" /></a>
+        <a asp-controller="Home" asp-action="Index" id="profile">Profile <img src="~/image/profileicon.svg" class="icon" alt="Profile" /></a>
+        <a asp-controller="Home" asp-action="Index" id="teacher">Teacher <img src="~/image/teachericon.svg" class="icon" alt="Teacher" /></a>
+        <a asp-controller="Home" asp-action="Index" id="student">Student <img src="~/image/studenticon.svg" class="icon" alt="Student" /></a>
+        <a asp-controller="Home" asp-action="Index" id="volunteer">Volunteer <img src="~/image/volunteericon.svg" class="icon" alt="Volunteer" /></a>
+        <a asp-controller="Home" asp-action="Index" id="help">Help <img src="~/image/helpicon.svg" class="icon" alt="Help" /></a>
+        <a asp-controller="Home" asp-action="Index" id="admin">Admin <img src="~/image/adminicon.svg" class="icon" alt="Administration" /></a>
+        <div class="siddedbar box-shadow"></div>
+    </div>
+
+    <div id="curretUser" class="d-flex alert-warning shadow-sm" role="alert">
+        <strong class="currentuserstrong">You are acting on behalf of:</strong>
+        <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bob Hadababyitsaboy</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Bob Hadababyitsaboy</a>
+                <a class="dropdown-item" href="#">Sara Hadababyitsaboy</a>
+                <a class="dropdown-item" href="#">Johnathan Hadababyitsaboy</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Add Family Member</a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -38,10 +45,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - Summer_Camp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - SummerCamp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
