@@ -5361,11 +5361,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ben_t\\source\\repos\\Summer Camp\\Summer Camp.csproj",
+      "projectUniqueName": "C:\\Users\\ben_t\\source\\repos\\Summer CampGit\\c# solution and project\\Summer Camp.csproj",
       "projectName": "Summer Camp",
-      "projectPath": "C:\\Users\\ben_t\\source\\repos\\Summer Camp\\Summer Camp.csproj",
+      "projectPath": "C:\\Users\\ben_t\\source\\repos\\Summer CampGit\\c# solution and project\\Summer Camp.csproj",
       "packagesPath": "C:\\Users\\ben_t\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ben_t\\source\\repos\\Summer Camp\\obj\\",
+      "outputPath": "C:\\Users\\ben_t\\source\\repos\\Summer CampGit\\c# solution and project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
