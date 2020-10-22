@@ -12,42 +12,71 @@
     <!-- The sidebar -->
     <div id="mySidenav" class="sidenav">
         <a asp-controller="Home" asp-action="Index" id="home">Home <img src="~/image/homeicon.svg" class="icon" alt="Home" /></a>
-        <a asp-controller="Home" asp-action="Index" id="login">Sign In/Up <img src="~/image/profileicon.svg" class="icon" alt="Sign In or Sign Up" /></a>
-        <a asp-controller="Home" asp-action="Index" id="profile">Profile <img src="~/image/profileicon.svg" class="icon" alt="Profile" /></a>
-        <a asp-controller="Home" asp-action="Index" id="teacher">Teacher <img src="~/image/teachericon.svg" class="icon" alt="Teacher" /></a>
-        <a asp-controller="Home" asp-action="Index" id="student">Student <img src="~/image/studenticon.svg" class="icon" alt="Student" /></a>
-        <a asp-controller="Home" asp-action="Index" id="volunteer">Volunteer <img src="~/image/volunteericon.svg" class="icon" alt="Volunteer" /></a>
-        <a asp-controller="Home" asp-action="Index" id="help">Help <img src="~/image/helpicon.svg" class="icon" alt="Help" /></a>
-        <a asp-controller="Home" asp-action="Index" id="admin">Admin <img src="~/image/adminicon.svg" class="icon" alt="Administration" /></a>
+        @if (ViewBag.Authorized == "true")
+        {
+            int fromTop = 80;
+            <a asp-controller='Home' asp-action='Profile' id='profile' style='top: @(fromTop)px;'>Profile <img src='~/image/profileicon.svg' class='icon' alt='Profile' /></a>
+            fromTop += 60;
+
+            if (ViewBag.IsTeacher == "true")
+            {
+                <a asp-controller='Home' asp-action='Teacher' id='teacher' style='top: @(fromTop)px;'>Teacher <img src='~/image/teachericon.svg' class='icon' alt='Teacher' /></a>
+                fromTop += 60;
+            }
+
+            <a asp-controller='Home' asp-action='Student' id='student' style='top: @(fromTop)px;'>Student <img src='~/image/studenticon.svg' class='icon' alt='Student' /></a>
+            fromTop += 60;
+            <a asp-controller='Home' asp-action='Volunteer' id='volunteer' style='top: @(fromTop)px;'>Volunteer <img src='~/image/volunteericon.svg' class='icon' alt='Volunteer' /></a>
+            fromTop += 60;
+
+            if (ViewBag.IsAdmin == "true")
+            {
+                <a asp-controller='Home' asp-action='Admin' id='admin' style='top: @(fromTop)px;'>Admin <img src='~/image/adminicon.svg' class='icon' alt='Administration' /></a>
+                fromTop += 60;
+            }
+
+            <a asp-controller='Home' asp-action='Help' id='help' style='top: @(fromTop)px;'>Help <img src='~/image/helpicon.svg' class='icon' alt='Help' /></a>
+
+        }
+        else
+        {
+            int fromTop = 80;
+            <a asp-controller='Home' asp-action='Login' id='login' style='top: @(fromTop)px;'>Sign In/Up <img src='~/image/profileicon.svg' class='icon' alt='Sign In or Sign Up' /></a>
+            fromTop += 60;
+            <a asp-controller='Home' asp-action='Help' id='help' style='top: @(fromTop)px;'>Help <img src='~/image/helpicon.svg' class='icon' alt='Help' /></a>
+
+        }
         <div class="siddedbar box-shadow"></div>
     </div>
 
-    <div id="curretUser" class="d-flex alert-warning shadow-sm" role="alert">
-        <strong class="currentuserstrong">You are acting on behalf of:</strong>
-        <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bob Hadababyitsaboy</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Bob Hadababyitsaboy</a>
-                <a class="dropdown-item" href="#">Sara Hadababyitsaboy</a>
-                <a class="dropdown-item" href="#">Johnathan Hadababyitsaboy</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Add Family Member</a>
+    @if (ViewBag.Authorized == "true")
+    {
+        <div id='curretUser'class='d-flex alert-warning shadow-sm'role='alert'>
+            <strong class='currentuserstrong'>You are acting on behalf of:</strong>
+            <div class='input-group-prepend'>
+                <button class='btn btn-outline-secondary dropdown-toggle'type='button'data-toggle='dropdown'aria-haspopup='true'aria-expanded='false'>Bob Hadababyitsaboy</button>
+                <div class='dropdown-menu'>
+                    <a class='dropdown-item'href='#'>Bob Hadababyitsaboy</a>
+                    <a class='dropdown-item'href='#'>Sara Hadababyitsaboy</a>
+                    <a class='dropdown-item'href='#'>Johnathan Hadababyitsaboy</a>
+                    <div role='separator'class='dropdown-divider'></div>
+                    <a class='dropdown-item'href='#'>Add Family Member</a>
+                </div>
             </div>
         </div>
-    </div>
+    }
 
     <!-- Page content -->
-    <div class="container-fluid rfooter">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+<div class="h-100 container-fluid">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    <footer class="border-top text-muted footer">
         <div class="container">
             &copy; 2020 - SummerCamp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+</div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
